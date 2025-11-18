@@ -1,239 +1,95 @@
-📈 **Tesla Stock Price Forecasting (ARIMA & SARIMA)**
+📈 **Tesla Stock Price Forecasting**
 
-This project focuses on forecasting the price of Tesla (TSLA) stock using classical time series analysis techniques, specifically ARIMA and SARIMA models.
-Historical stock price data was obtained using the yfinance library.
+Time series forecasting of Tesla (TSLA) stock prices using ARIMA and SARIMA models.
 
-**Table of Contents**
+🔍 **Overview**
 
-Project Overview
+This project forecasts monthly Tesla stock prices to support investment decisions, risk management, and financial planning.
+The goal is to model historical price patterns and generate short-term forecasts that can help analysts and investors understand potential future movements in TSLA stock.
+The workflow includes EDA, stationarity checks, seasonality analysis, model building, and a 12-month forecast.
 
-Dataset
+📊 **Dataset**
 
-Methodology
+* Source: Yahoo Finance (yfinance)
 
-Exploratory Data Analysis (EDA)
+* Ticker: TSLA
 
-Seasonality Decomposition
+* Period: 2015–2025
 
-Stationarity
+* Frequency: Monthly
 
-ACF & PACF for Model Order Selection
+* Feature: Closing Price
 
-Model Building (ARIMA & SARIMA)
+🛠 **Methodology**
 
-Forecasting
+* Data exploration and trend analysis
 
-Results
+* STL seasonal decomposition
 
-Future Work
+* Stationarity testing (ADF)
 
-Installation
+* First-order differencing
 
-Usage
+* ACF/PACF for parameter selection
 
-Contributing
+* ARIMA and SARIMA model training
 
-License
+* Forecast generation
 
-Contact
+🤖 **Models**
 
-**Project Overview**
+* Model	Seasonal	AIC	Notes
+  * ARIMA(1,1,1)	No	1219.68	Basic fit
+    
+  * SARIMA(1,1,1)(1,1,1,12)	Yes	1141.39	Best model
 
-The goal of this project is to build time series models capable of predicting future Tesla stock prices.
-Understanding TSLA price movements is valuable for traders, investors, analysts, and financial strategists.
+**SARIMA provided the most stable and realistic forecasts.**
 
-This project demonstrates a complete time series workflow:
+🔮 **Results**
 
-Data acquisition
+* Strong long-term upward trend in TSLA prices
 
-Exploration and preprocessing
+* Mild yearly seasonality detected
 
-Stationarity testing
+* SARIMA outperformed ARIMA in model fit and forecast reliability
 
-Seasonal decomposition
+* Forecast useful for trend insight, not exact price prediction
 
-Model training & comparison
+**Technologies Used**
 
-Forecast visualization
+* Python
 
-**Dataset**
+* Pandas, NumPy
 
-Source: yfinance
+* Matplotlib
 
-Ticker: TSLA
+* Statsmodels
 
-Date Range: 2015-01-01 to 2025-07-15
+* yfinance
 
-Interval: Monthly
+* Jupyter Notebook
 
-Feature Used: Closing Price
+🚀 **Future Improvements**
 
-🛠 Methodology
-Exploratory Data Analysis (EDA)
+* Add exogenous predictors (SARIMAX)
 
-Included:
+* Implement Prophet, LSTM, or GRU models
 
-Line plot of historical TSLA prices
+🗂 **Repository Structure**
 
-Summary statistics
-
-Trend and volatility inspection
-
-Seasonality Decomposition
-
-Used STL decomposition to extract:
-
-Trend
-
-Seasonal component
-
-Residuals
-
-Stationarity
-
-Since ARIMA/SARIMA require stationarity:
-
-First-order differencing was applied
-
-ADF Test performed
-
-ADF p-value ≈ 0.80 → Non-stationary before differencing
-
-ACF & PACF
-
-Used to identify:
-
-AR (p)
-
-MA (q)
-
-Seasonal parameters (P, Q, S)
-
-**Model Building (ARIMA & SARIMA)**
-ARIMA Model
-
-Model: ARIMA(1,1,1)
-
-Captured basic structure but failed to model strong trend & volatility
-
-Higher AIC score → weaker performance
-
-SARIMA Model
-
-Model: SARIMA(1,1,1)(1,1,1,12)
-
-Included yearly seasonality
-
-More realistic forecasts
-
-Lower AIC → Better fit
-
-Model	AIC	Seasonal	Stationarity	Notes
-ARIMA	1219.68	❌ No	Differenced	Limited performance
-SARIMA	1141.39	✅ Yes	Differenced	Preferred model
-🔮 Forecasting
-
-Both models were used to generate 12-month forecasts, with SARIMA producing smoother, more credible future price trends.
-
-📈 Results
-
-Key insights:
-
-Tesla prices show a strong long-term upward trend
-
-Mild yearly seasonality detected
-
-SARIMA outperformed ARIMA based on AIC
-
-Forecast shows stable-to-slightly upward price movement
-
-**Future Work**
-
-Add external macroeconomic variables (SARIMAX)
-
-Implement advanced models: Prophet, LSTM/GRU
-
-Hyperparameter optimization (GridSearch, Auto-ARIMA)
-
- Repository Structure
- tesla-price-forecasting/
-├── notebooks/
-
-│   └── Tesla_TimeSeries_Forecasting.ipynb
-
-├── images/
-
-├── data/
-
-├── requirements.txt
-
-└── README.md
-
-🧰 Technologies Used
-
-Python
-
-Pandas, NumPy
-
-Matplotlib, Seaborn
-
-Statsmodels
-
-yfinance
-
-Jupyter Notebook
-
-⚙️ Installation
-# Clone the repository
-git clone https://github.com/your-username/Tesla-Price-Forecasting
-cd Tesla-Price-Forecasting
-
-# Install dependencies
-pip install -r requirements.txt
-
-requirements.txt (example)
-
-pandas
-
-numpy
-
-matplotlib
-
-seaborn
-
-statsmodels
-
-yfinance
-
-jupyter
+notebooks/
+data/
+images/
+requirements.txt
+README.md
 
 ▶️ Usage
-
-Open the notebook:
-
+pip install -r requirements.txt
 jupyter notebook notebooks/Tesla_TimeSeries_Forecasting.ipynb
-
-
-Run all cells to:
-
-Load data
-
-Fit ARIMA/SARIMA
-
-Visualize forecasts
-
-🤝 Contributing
-
-Contributions are welcome!
-Feel free to open issues or submit pull requests.
-
-📄 License
-
-This project is open-source under the MIT License.
 
 👤 Author
 
 Mohammadi Nilofer
 📧 niloferm7@yahoo.com
 
-🌐 GitHub: https://github.com/Mohammadi-Nilofer
+GitHub: https://github.com/Mohammadi-Nilofer
